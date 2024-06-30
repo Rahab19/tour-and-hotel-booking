@@ -1,0 +1,53 @@
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+<div *ngIf="route.snapshot.data['type'] === 'hotel'">
+  <h2>{{ isEditMode ? 'Edit' : 'Add' }} Hotel</h2>
+  <form [formGroup]="hotelForm" (ngSubmit)="onSubmitHotel()">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" formControlName="name" required>
+      <div *ngIf="hotelForm.get('name')?.invalid && hotelForm.get('name')?.touched" class="error">
+        <div *ngIf="hotelForm.get('name')?.errors?.['required']">Name is required.</div>
+        <div *ngIf="hotelForm.get('name')?.errors?.['minlength']">Name must be at least 3 characters long.</div>
+      </div>
+    </div>
+    <div>
+      <label for="location">Location:</label>
+      <input type="text" id="location" formControlName="location" required>
+      <div *ngIf="hotelForm.get('location')?.invalid && hotelForm.get('location')?.touched" class="error">
+        Location is required.
+      </div>
+    </div>
+    <button type="submit" [disabled]="hotelForm.invalid">{{ isEditMode ? 'Update' : 'Add' }} Hotel</button>
+  </form>
+</div>
+
+<div *ngIf=  "route.snapshot.data['type'] === 'tour'">
+  <h2>{{ isEditMode ? 'Edit' : 'Add' }} Tour</h2>
+  <form [formGroup]="tourForm" (ngSubmit)="onSubmitTour()">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" formControlName="name" required>
+      <div *ngIf="tourForm.get('name')?.invalid && tourForm.get('name')?.touched" class="error">
+        <div *ngIf="tourForm.get('name')?.errors?.['required']">Name is required.</div>
+        <div *ngIf="tourForm.get('name')?.errors?.['minlength']">Name must be at least 3 characters long.</div>
+      </div>
+    </div>
+    <div>
+      <label for="destination">Destination:</label>
+      <input type="text" id="destination" formControlName="destination" required>
+      <div *ngIf="tourForm.get('destination')?.invalid && tourForm.get('destination')?.touched" class="error">
+        Destination is required.
+      </div>
+    </div>
+    <div>
+      <label for="duration">Duration (days):</label>
+      <input type="number" id="duration" formControlName="duration" required>
+      <div *ngIf="tourForm.get('duration')?.invalid && tourForm.get('duration')?.touched" class="error">
+        <div *ngIf="tourForm.get('duration')?.errors?.['required']">Duration is required.</div>
+        <div *ngIf="tourForm.get('duration')?.errors?.['min']">Duration must be at least 1 day.</div>
+      </div>
+    </div>
+    <button type="submit" [disabled]="tourForm.invalid">{{ isEditMode ? 'Update' : 'Add' }} Tour</button>
+  </form>
+</div>

@@ -1,0 +1,23 @@
+
+<nav>
+  <span class="logo">TravelBook</span>
+  <a routerLink="/" class="nav-link">Home</a>
+  <!-- <a routerLink="/booking" class="nav-link">Book</a> -->
+  <a routerLink="/register" class="nav-link">Register</a>
+  <a routerLink="/login" class="nav-link">Login</a>
+</nav>
+<!-- <nav>
+  <a *ngIf="!authService.isAuthenticated()" routerLink="/register">Register</a>
+  <a *ngIf="!authService.isAuthenticated()" routerLink="/login">Login</a>
+  <a *ngIf="authService.isAuthenticated()" (click)="logout()">Logout</a>
+  <a *ngIf="authService.isAuthenticated() && authService.isAdmin()" routerLink="/admin">Admin</a>
+  <a *ngIf="authService.isAuthenticated() && !authService.isAdmin()" routerLink="/booking">Book</a>
+</nav> -->
+
+
+
+
+<router-outlet>
+
+
+</router-outlet>
